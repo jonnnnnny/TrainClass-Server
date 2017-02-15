@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.train.mapper.TimePropertyMapper">
+	<resultMap id="BaseResultMap" type="com.train.pojo.TimeProperty">
+		<id column="tp_id" property="tpId" jdbcType="VARCHAR" />
+		<result column="tp_name" property="tpName" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		tp_id, tp_name
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from time_property
+		where tp_id = #{tpId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		time_property
+		where tp_id = #{tpId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.train.pojo.TimeProperty">
+		insert into time_property
+		(tp_id, tp_name)
+		values (#{tpId,jdbcType=VARCHAR},
+		#{tpName,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.train.pojo.TimeProperty">
+		insert into time_property
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="tpId != null">
+				tp_id,
+			</if>
+			<if test="tpName != null">
+				tp_name,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="tpId != null">
+				#{tpId,jdbcType=VARCHAR},
+			</if>
+			<if test="tpName != null">
+				#{tpName,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.train.pojo.TimeProperty">
+		update time_property
+		<set>
+			<if test="tpName != null">
+				tp_name = #{tpName,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where tp_id = #{tpId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.train.pojo.TimeProperty">
+		update
+		time_property
+		set tp_name = #{tpName,jdbcType=VARCHAR}
+		where tp_id =
+		#{tpId,jdbcType=VARCHAR}
+	</update>
+
+	<!-- 获取所有时间性质的名称 -->
+	<select id="getAllName" resultType="java.lang.String">
+		select tp_name from
+		time_property
+	</select>
+	<select id="selectIdByName" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select tp_id from time_property where tp_name = #{name}
+	</select>
+</mapper>

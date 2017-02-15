@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.train.mapper.StudentCurrentMapper">
+	<resultMap id="BaseResultMap" type="com.train.pojo.StudentCurrent">
+		<id column="sc_id" property="scId" jdbcType="VARCHAR" />
+		<result column="sc_name" property="scName" jdbcType="VARCHAR" />
+		<result column="sc_gender" property="scGender" jdbcType="VARCHAR" />
+		<result column="sc_idcardno" property="scIdcardno" jdbcType="VARCHAR" />
+		<result column="sc_zhitel" property="scZhitel" jdbcType="VARCHAR" />
+		<result column="sc_standbytel" property="scStandbytel"
+			jdbcType="VARCHAR" />
+		<result column="sc_email" property="scEmail" jdbcType="VARCHAR" />
+		<result column="sc_qq" property="scQq" jdbcType="VARCHAR" />
+		<result column="sc_msn" property="scMsn" jdbcType="VARCHAR" />
+		<result column="sc_bg" property="scBg" jdbcType="VARCHAR" />
+		<result column="sc_histstudy" property="scHiststudy" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		sc_id, sc_name, sc_gender, sc_idcardno, sc_zhitel,
+		sc_standbytel, sc_email,
+		sc_qq,
+		sc_msn, sc_bg, sc_histstudy
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from student_current
+		where sc_id = #{scId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		student_current
+		where sc_id = #{scId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.train.pojo.StudentCurrent">
+		insert into student_current
+		(sc_id, sc_name, sc_gender,
+		sc_idcardno, sc_zhitel, sc_standbytel,
+		sc_email, sc_qq, sc_msn,
+		sc_bg, sc_histstudy)
+		values
+		(#{scId,jdbcType=VARCHAR}, #{scName,jdbcType=VARCHAR},
+		#{scGender,jdbcType=VARCHAR},
+		#{scIdcardno,jdbcType=VARCHAR},
+		#{scZhitel,jdbcType=VARCHAR}, #{scStandbytel,jdbcType=VARCHAR},
+		#{scEmail,jdbcType=VARCHAR}, #{scQq,jdbcType=VARCHAR},
+		#{scMsn,jdbcType=VARCHAR},
+		#{scBg,jdbcType=VARCHAR},
+		#{scHiststudy,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.train.pojo.StudentCurrent">
+		insert into student_current
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="scId != null">
+				sc_id,
+			</if>
+			<if test="scName != null">
+				sc_name,
+			</if>
+			<if test="scGender != null">
+				sc_gender,
+			</if>
+			<if test="scIdcardno != null">
+				sc_idcardno,
+			</if>
+			<if test="scZhitel != null">
+				sc_zhitel,
+			</if>
+			<if test="scStandbytel != null">
+				sc_standbytel,
+			</if>
+			<if test="scEmail != null">
+				sc_email,
+			</if>
+			<if test="scQq != null">
+				sc_qq,
+			</if>
+			<if test="scMsn != null">
+				sc_msn,
+			</if>
+			<if test="scBg != null">
+				sc_bg,
+			</if>
+			<if test="scHiststudy != null">
+				sc_histstudy,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="scId != null">
+				#{scId,jdbcType=VARCHAR},
+			</if>
+			<if test="scName != null">
+				#{scName,jdbcType=VARCHAR},
+			</if>
+			<if test="scGender != null">
+				#{scGender,jdbcType=VARCHAR},
+			</if>
+			<if test="scIdcardno != null">
+				#{scIdcardno,jdbcType=VARCHAR},
+			</if>
+			<if test="scZhitel != null">
+				#{scZhitel,jdbcType=VARCHAR},
+			</if>
+			<if test="scStandbytel != null">
+				#{scStandbytel,jdbcType=VARCHAR},
+			</if>
+			<if test="scEmail != null">
+				#{scEmail,jdbcType=VARCHAR},
+			</if>
+			<if test="scQq != null">
+				#{scQq,jdbcType=VARCHAR},
+			</if>
+			<if test="scMsn != null">
+				#{scMsn,jdbcType=VARCHAR},
+			</if>
+			<if test="scBg != null">
+				#{scBg,jdbcType=VARCHAR},
+			</if>
+			<if test="scHiststudy != null">
+				#{scHiststudy,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.train.pojo.StudentCurrent">
+		update student_current
+		<set>
+			<if test="scName != null">
+				sc_name = #{scName,jdbcType=VARCHAR},
+			</if>
+			<if test="scGender != null">
+				sc_gender = #{scGender,jdbcType=VARCHAR},
+			</if>
+			<if test="scIdcardno != null">
+				sc_idcardno = #{scIdcardno,jdbcType=VARCHAR},
+			</if>
+			<if test="scZhitel != null">
+				sc_zhitel = #{scZhitel,jdbcType=VARCHAR},
+			</if>
+			<if test="scStandbytel != null">
+				sc_standbytel = #{scStandbytel,jdbcType=VARCHAR},
+			</if>
+			<if test="scEmail != null">
+				sc_email = #{scEmail,jdbcType=VARCHAR},
+			</if>
+			<if test="scQq != null">
+				sc_qq = #{scQq,jdbcType=VARCHAR},
+			</if>
+			<if test="scMsn != null">
+				sc_msn = #{scMsn,jdbcType=VARCHAR},
+			</if>
+			<if test="scBg != null">
+				sc_bg = #{scBg,jdbcType=VARCHAR},
+			</if>
+			<if test="scHiststudy != null">
+				sc_histstudy = #{scHiststudy,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where sc_id = #{scId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.train.pojo.StudentCurrent">
+		update
+		student_current
+		set sc_name = #{scName,jdbcType=VARCHAR},
+		sc_gender =
+		#{scGender,jdbcType=VARCHAR},
+		sc_idcardno =
+		#{scIdcardno,jdbcType=VARCHAR},
+		sc_zhitel =
+		#{scZhitel,jdbcType=VARCHAR},
+		sc_standbytel =
+		#{scStandbytel,jdbcType=VARCHAR},
+		sc_email =
+		#{scEmail,jdbcType=VARCHAR},
+		sc_qq = #{scQq,jdbcType=VARCHAR},
+		sc_msn =
+		#{scMsn,jdbcType=VARCHAR},
+		sc_bg = #{scBg,jdbcType=VARCHAR},
+		sc_histstudy = #{scHiststudy,jdbcType=VARCHAR}
+		where sc_id =
+		#{scId,jdbcType=VARCHAR}
+	</update>
+	<select id="selectByPhone" parameterType="java.util.HashMap"
+		resultMap="BaseResultMap">
+		select * from student_current where sc_zhitel =
+		#{phone}
+	</select>
+
+	<update id="updateByPrimaryKeySelectiveWithHashMap"
+		parameterType="java.util.HashMap">
+		update student_current
+		<set>
+			<if test="sc_name != null">
+				sc_name = #{sc_name,jdbcType=VARCHAR},
+			</if>
+			<if test="sc_gender != null">
+				sc_gender = #{sc_gender,jdbcType=VARCHAR},
+			</if>
+			<if test="sc_idcardno != null">
+				sc_idcardno = #{sc_idcardno,jdbcType=VARCHAR},
+			</if>
+			<if test="sc_zhitel != null">
+				sc_zhitel = #{sc_zhitel,jdbcType=VARCHAR},
+			</if>
+			<if test="sc_standbytel != null">
+				sc_standbytel = #{sc_standbytel,jdbcType=VARCHAR},
+			</if>
+			<if test="sc_email != null">
+				sc_email = #{sc_email,jdbcType=VARCHAR},
+			</if>
+			<if test="sc_qq != null">
+				sc_qq = #{sc_qq,jdbcType=VARCHAR},
+			</if>
+			<if test="sc_msn != null">
+				sc_msn = #{sc_msn,jdbcType=VARCHAR},
+			</if>
+			<if test="sc_bg != null">
+				sc_bg = #{sc_bg,jdbcType=VARCHAR},
+			</if>
+			<if test="sc_histstudy != null">
+				sc_histstudy = #{sc_histstudy,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where sc_id = #{id,jdbcType=VARCHAR}
+	</update>
+</mapper>

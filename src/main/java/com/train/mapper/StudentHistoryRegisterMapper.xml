@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.train.mapper.StudentHistoryRegisterMapper" >
+  <resultMap id="BaseResultMap" type="com.train.pojo.StudentHistoryRegister" >
+    <id column="no" property="no" jdbcType="INTEGER" />
+    <result column="shr_time" property="shrTime" jdbcType="TIMESTAMP" />
+    <result column="shr_regtypeid" property="shrRegtypeid" jdbcType="VARCHAR" />
+    <result column="shr_regtypename" property="shrRegtypename" jdbcType="VARCHAR" />
+    <result column="shr_regtypefeat" property="shrRegtypefeat" jdbcType="VARCHAR" />
+    <result column="shr_studid" property="shrStudid" jdbcType="VARCHAR" />
+    <result column="shr_password" property="shrPassword" jdbcType="VARCHAR" />
+    <result column="shr_classid" property="shrClassid" jdbcType="VARCHAR" />
+    <result column="shr_classname" property="shrClassname" jdbcType="VARCHAR" />
+    <result column="shr_singleornot" property="shrSingleornot" jdbcType="VARCHAR" />
+    <result column="shr_ps" property="shrPs" jdbcType="VARCHAR" />
+    <result column="shr_receipt" property="shrReceipt" jdbcType="VARCHAR" />
+    <result column="shr_operator" property="shrOperator" jdbcType="VARCHAR" />
+    <result column="shr_info" property="shrInfo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    no, shr_time, shr_regtypeid, shr_regtypename, shr_regtypefeat, shr_studid, shr_password, 
+    shr_classid, shr_classname, shr_singleornot, shr_ps, shr_receipt, shr_operator, shr_info
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from student_history_register
+    where no = #{no,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from student_history_register
+    where no = #{no,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.train.pojo.StudentHistoryRegister" >
+    insert into student_history_register (no, shr_time, shr_regtypeid, 
+      shr_regtypename, shr_regtypefeat, shr_studid, 
+      shr_password, shr_classid, shr_classname, 
+      shr_singleornot, shr_ps, shr_receipt, 
+      shr_operator, shr_info)
+    values (#{no,jdbcType=INTEGER}, #{shrTime,jdbcType=TIMESTAMP}, #{shrRegtypeid,jdbcType=VARCHAR}, 
+      #{shrRegtypename,jdbcType=VARCHAR}, #{shrRegtypefeat,jdbcType=VARCHAR}, #{shrStudid,jdbcType=VARCHAR}, 
+      #{shrPassword,jdbcType=VARCHAR}, #{shrClassid,jdbcType=VARCHAR}, #{shrClassname,jdbcType=VARCHAR}, 
+      #{shrSingleornot,jdbcType=VARCHAR}, #{shrPs,jdbcType=VARCHAR}, #{shrReceipt,jdbcType=VARCHAR}, 
+      #{shrOperator,jdbcType=VARCHAR}, #{shrInfo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.train.pojo.StudentHistoryRegister" >
+    insert into student_history_register
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        no,
+      </if>
+      <if test="shrTime != null" >
+        shr_time,
+      </if>
+      <if test="shrRegtypeid != null" >
+        shr_regtypeid,
+      </if>
+      <if test="shrRegtypename != null" >
+        shr_regtypename,
+      </if>
+      <if test="shrRegtypefeat != null" >
+        shr_regtypefeat,
+      </if>
+      <if test="shrStudid != null" >
+        shr_studid,
+      </if>
+      <if test="shrPassword != null" >
+        shr_password,
+      </if>
+      <if test="shrClassid != null" >
+        shr_classid,
+      </if>
+      <if test="shrClassname != null" >
+        shr_classname,
+      </if>
+      <if test="shrSingleornot != null" >
+        shr_singleornot,
+      </if>
+      <if test="shrPs != null" >
+        shr_ps,
+      </if>
+      <if test="shrReceipt != null" >
+        shr_receipt,
+      </if>
+      <if test="shrOperator != null" >
+        shr_operator,
+      </if>
+      <if test="shrInfo != null" >
+        shr_info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        #{no,jdbcType=INTEGER},
+      </if>
+      <if test="shrTime != null" >
+        #{shrTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shrRegtypeid != null" >
+        #{shrRegtypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="shrRegtypename != null" >
+        #{shrRegtypename,jdbcType=VARCHAR},
+      </if>
+      <if test="shrRegtypefeat != null" >
+        #{shrRegtypefeat,jdbcType=VARCHAR},
+      </if>
+      <if test="shrStudid != null" >
+        #{shrStudid,jdbcType=VARCHAR},
+      </if>
+      <if test="shrPassword != null" >
+        #{shrPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="shrClassid != null" >
+        #{shrClassid,jdbcType=VARCHAR},
+      </if>
+      <if test="shrClassname != null" >
+        #{shrClassname,jdbcType=VARCHAR},
+      </if>
+      <if test="shrSingleornot != null" >
+        #{shrSingleornot,jdbcType=VARCHAR},
+      </if>
+      <if test="shrPs != null" >
+        #{shrPs,jdbcType=VARCHAR},
+      </if>
+      <if test="shrReceipt != null" >
+        #{shrReceipt,jdbcType=VARCHAR},
+      </if>
+      <if test="shrOperator != null" >
+        #{shrOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="shrInfo != null" >
+        #{shrInfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.train.pojo.StudentHistoryRegister" >
+    update student_history_register
+    <set >
+      <if test="shrTime != null" >
+        shr_time = #{shrTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shrRegtypeid != null" >
+        shr_regtypeid = #{shrRegtypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="shrRegtypename != null" >
+        shr_regtypename = #{shrRegtypename,jdbcType=VARCHAR},
+      </if>
+      <if test="shrRegtypefeat != null" >
+        shr_regtypefeat = #{shrRegtypefeat,jdbcType=VARCHAR},
+      </if>
+      <if test="shrStudid != null" >
+        shr_studid = #{shrStudid,jdbcType=VARCHAR},
+      </if>
+      <if test="shrPassword != null" >
+        shr_password = #{shrPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="shrClassid != null" >
+        shr_classid = #{shrClassid,jdbcType=VARCHAR},
+      </if>
+      <if test="shrClassname != null" >
+        shr_classname = #{shrClassname,jdbcType=VARCHAR},
+      </if>
+      <if test="shrSingleornot != null" >
+        shr_singleornot = #{shrSingleornot,jdbcType=VARCHAR},
+      </if>
+      <if test="shrPs != null" >
+        shr_ps = #{shrPs,jdbcType=VARCHAR},
+      </if>
+      <if test="shrReceipt != null" >
+        shr_receipt = #{shrReceipt,jdbcType=VARCHAR},
+      </if>
+      <if test="shrOperator != null" >
+        shr_operator = #{shrOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="shrInfo != null" >
+        shr_info = #{shrInfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where no = #{no,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.train.pojo.StudentHistoryRegister" >
+    update student_history_register
+    set shr_time = #{shrTime,jdbcType=TIMESTAMP},
+      shr_regtypeid = #{shrRegtypeid,jdbcType=VARCHAR},
+      shr_regtypename = #{shrRegtypename,jdbcType=VARCHAR},
+      shr_regtypefeat = #{shrRegtypefeat,jdbcType=VARCHAR},
+      shr_studid = #{shrStudid,jdbcType=VARCHAR},
+      shr_password = #{shrPassword,jdbcType=VARCHAR},
+      shr_classid = #{shrClassid,jdbcType=VARCHAR},
+      shr_classname = #{shrClassname,jdbcType=VARCHAR},
+      shr_singleornot = #{shrSingleornot,jdbcType=VARCHAR},
+      shr_ps = #{shrPs,jdbcType=VARCHAR},
+      shr_receipt = #{shrReceipt,jdbcType=VARCHAR},
+      shr_operator = #{shrOperator,jdbcType=VARCHAR},
+      shr_info = #{shrInfo,jdbcType=VARCHAR}
+    where no = #{no,jdbcType=INTEGER}
+  </update>
+</mapper>

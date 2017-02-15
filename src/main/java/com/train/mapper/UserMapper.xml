@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.train.mapper.UserMapper">
+	<resultMap id="BaseResultMap" type="com.train.pojo.User">
+		<id column="u_phone" property="uPhone" jdbcType="VARCHAR" />
+		<result column="u_password" property="uPassword" jdbcType="VARCHAR" />
+		<result column="u_type" property="uType" jdbcType="VARCHAR" />
+		<result column="u_stuid" property="uStuid" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		u_phone, u_password, u_type, u_stuid
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where u_phone = #{uPhone,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from user
+		where u_phone = #{uPhone,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.train.pojo.User">
+		insert into user (u_phone,
+		u_password, u_type,
+		u_stuid)
+		values (#{uPhone,jdbcType=VARCHAR},
+		#{uPassword,jdbcType=VARCHAR},
+		#{uType,jdbcType=VARCHAR},
+		#{uStuid,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.train.pojo.User">
+		insert into user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="uPhone != null">
+				u_phone,
+			</if>
+			<if test="uPassword != null">
+				u_password,
+			</if>
+			<if test="uType != null">
+				u_type,
+			</if>
+			<if test="uStuid != null">
+				u_stuid,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="uPhone != null">
+				#{uPhone,jdbcType=VARCHAR},
+			</if>
+			<if test="uPassword != null">
+				#{uPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="uType != null">
+				#{uType,jdbcType=VARCHAR},
+			</if>
+			<if test="uStuid != null">
+				#{uStuid,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.train.pojo.User">
+		update user
+		<set>
+			<if test="uPassword != null">
+				u_password = #{uPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="uType != null">
+				u_type = #{uType,jdbcType=VARCHAR},
+			</if>
+			<if test="uStuid != null">
+				u_stuid = #{uStuid,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where u_phone = #{uPhone,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.train.pojo.User">
+		update user
+		set
+		u_password = #{uPassword,jdbcType=VARCHAR},
+		u_type =
+		#{uType,jdbcType=VARCHAR},
+		u_stuid = #{uStuid,jdbcType=VARCHAR}
+		where
+		u_phone = #{uPhone,jdbcType=VARCHAR}
+	</update>
+
+	<select id="selectByPhoneAndPassword" parameterType="com.train.pojo.User"
+		resultType="java.util.HashMap">
+		select u_phone,u_type,u_stuid from user where
+		u_phone=#{uPhone} and u_password=#{uPassword}
+	</select>
+	<select id="selectByPhone" parameterType="java.util.HashMap"
+		resultMap="BaseResultMap">
+		select * from user where u_phone=#{phone}
+	</select>
+</mapper>

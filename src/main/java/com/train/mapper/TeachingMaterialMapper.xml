@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.train.mapper.TeachingMaterialMapper" >
+  <resultMap id="BaseResultMap" type="com.train.pojo.TeachingMaterial" >
+    <id column="tm_id" property="tmId" jdbcType="VARCHAR" />
+    <result column="tm_abbr" property="tmAbbr" jdbcType="VARCHAR" />
+    <result column="tm_icon" property="tmIcon" jdbcType="VARCHAR" />
+    <result column="tm_name" property="tmName" jdbcType="VARCHAR" />
+    <result column="tm_image" property="tmImage" jdbcType="VARCHAR" />
+    <result column="tm_desc" property="tmDesc" jdbcType="VARCHAR" />
+    <result column="tm_price" property="tmPrice" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tm_id, tm_abbr, tm_icon, tm_name, tm_image, tm_desc, tm_price
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from teaching_material
+    where tm_id = #{tmId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from teaching_material
+    where tm_id = #{tmId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.train.pojo.TeachingMaterial" >
+    insert into teaching_material (tm_id, tm_abbr, tm_icon, 
+      tm_name, tm_image, tm_desc, 
+      tm_price)
+    values (#{tmId,jdbcType=VARCHAR}, #{tmAbbr,jdbcType=VARCHAR}, #{tmIcon,jdbcType=VARCHAR}, 
+      #{tmName,jdbcType=VARCHAR}, #{tmImage,jdbcType=VARCHAR}, #{tmDesc,jdbcType=VARCHAR}, 
+      #{tmPrice,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.train.pojo.TeachingMaterial" >
+    insert into teaching_material
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tmId != null" >
+        tm_id,
+      </if>
+      <if test="tmAbbr != null" >
+        tm_abbr,
+      </if>
+      <if test="tmIcon != null" >
+        tm_icon,
+      </if>
+      <if test="tmName != null" >
+        tm_name,
+      </if>
+      <if test="tmImage != null" >
+        tm_image,
+      </if>
+      <if test="tmDesc != null" >
+        tm_desc,
+      </if>
+      <if test="tmPrice != null" >
+        tm_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tmId != null" >
+        #{tmId,jdbcType=VARCHAR},
+      </if>
+      <if test="tmAbbr != null" >
+        #{tmAbbr,jdbcType=VARCHAR},
+      </if>
+      <if test="tmIcon != null" >
+        #{tmIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="tmName != null" >
+        #{tmName,jdbcType=VARCHAR},
+      </if>
+      <if test="tmImage != null" >
+        #{tmImage,jdbcType=VARCHAR},
+      </if>
+      <if test="tmDesc != null" >
+        #{tmDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tmPrice != null" >
+        #{tmPrice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.train.pojo.TeachingMaterial" >
+    update teaching_material
+    <set >
+      <if test="tmAbbr != null" >
+        tm_abbr = #{tmAbbr,jdbcType=VARCHAR},
+      </if>
+      <if test="tmIcon != null" >
+        tm_icon = #{tmIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="tmName != null" >
+        tm_name = #{tmName,jdbcType=VARCHAR},
+      </if>
+      <if test="tmImage != null" >
+        tm_image = #{tmImage,jdbcType=VARCHAR},
+      </if>
+      <if test="tmDesc != null" >
+        tm_desc = #{tmDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tmPrice != null" >
+        tm_price = #{tmPrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where tm_id = #{tmId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.train.pojo.TeachingMaterial" >
+    update teaching_material
+    set tm_abbr = #{tmAbbr,jdbcType=VARCHAR},
+      tm_icon = #{tmIcon,jdbcType=VARCHAR},
+      tm_name = #{tmName,jdbcType=VARCHAR},
+      tm_image = #{tmImage,jdbcType=VARCHAR},
+      tm_desc = #{tmDesc,jdbcType=VARCHAR},
+      tm_price = #{tmPrice,jdbcType=DECIMAL}
+    where tm_id = #{tmId,jdbcType=VARCHAR}
+  </update>
+</mapper>

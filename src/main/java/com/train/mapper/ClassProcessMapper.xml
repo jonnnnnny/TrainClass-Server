@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.train.mapper.ClassProcessMapper">
+	<resultMap id="BaseResultMap" type="com.train.pojo.ClassProcess">
+		<id column="cp_id" property="cpId" jdbcType="VARCHAR" />
+		<result column="cp_schemeNo" property="cpSchemeno" jdbcType="INTEGER" />
+		<result column="cp_name" property="cpName" jdbcType="VARCHAR" />
+		<result column="cp_coursename" property="cpCoursename"
+			jdbcType="VARCHAR" />
+		<result column="cp_locaname" property="cpLocaname" jdbcType="VARCHAR" />
+		<result column="cp_timename" property="cpTimename" jdbcType="VARCHAR" />
+		<result column="cp_modebfname" property="cpModebfname"
+			jdbcType="VARCHAR" />
+		<result column="cp_schtime" property="cpSchtime" jdbcType="VARCHAR" />
+		<result column="cp_starttime" property="cpStarttime" jdbcType="DATE" />
+		<result column="cp_endtime" property="cpEndtime" jdbcType="DATE" />
+		<result column="cp_teacher" property="cpTeacher" jdbcType="VARCHAR" />
+		<result column="cp_teachername" property="cpTeachername"
+			jdbcType="VARCHAR" />
+		<result column="cp_studamount" property="cpStudamount"
+			jdbcType="TINYINT" />
+		<result column="cp_comment" property="cpComment" jdbcType="VARCHAR" />
+		<result column="cp_operator" property="cpOperator" jdbcType="VARCHAR" />
+		<result column="cp_calculate" property="cpCalculate" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		cp_id, cp_schemeNo, cp_name, cp_coursename, cp_locaname,
+		cp_timename,
+		cp_modebfname,
+		cp_schtime, cp_starttime, cp_endtime,
+		cp_teacher, cp_teachername, cp_studamount,
+		cp_comment, cp_operator,
+		cp_calculate
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from class_process
+		where cp_id = #{cpId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		class_process
+		where cp_id = #{cpId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.train.pojo.ClassProcess">
+		insert into class_process
+		(cp_id, cp_schemeNo, cp_name,
+		cp_coursename, cp_locaname, cp_timename,
+		cp_modebfname, cp_schtime, cp_starttime,
+		cp_endtime, cp_teacher,
+		cp_teachername,
+		cp_studamount, cp_comment, cp_operator,
+		cp_calculate)
+		values (#{cpId,jdbcType=VARCHAR}, #{cpSchemeno,jdbcType=INTEGER},
+		#{cpName,jdbcType=VARCHAR},
+		#{cpCoursename,jdbcType=VARCHAR},
+		#{cpLocaname,jdbcType=VARCHAR}, #{cpTimename,jdbcType=VARCHAR},
+		#{cpModebfname,jdbcType=VARCHAR}, #{cpSchtime,jdbcType=VARCHAR},
+		#{cpStarttime,jdbcType=DATE},
+		#{cpEndtime,jdbcType=DATE},
+		#{cpTeacher,jdbcType=VARCHAR}, #{cpTeachername,jdbcType=VARCHAR},
+		#{cpStudamount,jdbcType=TINYINT}, #{cpComment,jdbcType=VARCHAR},
+		#{cpOperator,jdbcType=VARCHAR},
+		#{cpCalculate,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="com.train.pojo.ClassProcess">
+		insert into class_process
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="cpId != null">
+				cp_id,
+			</if>
+			<if test="cpSchemeno != null">
+				cp_schemeNo,
+			</if>
+			<if test="cpName != null">
+				cp_name,
+			</if>
+			<if test="cpCoursename != null">
+				cp_coursename,
+			</if>
+			<if test="cpLocaname != null">
+				cp_locaname,
+			</if>
+			<if test="cpTimename != null">
+				cp_timename,
+			</if>
+			<if test="cpModebfname != null">
+				cp_modebfname,
+			</if>
+			<if test="cpSchtime != null">
+				cp_schtime,
+			</if>
+			<if test="cpStarttime != null">
+				cp_starttime,
+			</if>
+			<if test="cpEndtime != null">
+				cp_endtime,
+			</if>
+			<if test="cpTeacher != null">
+				cp_teacher,
+			</if>
+			<if test="cpTeachername != null">
+				cp_teachername,
+			</if>
+			<if test="cpStudamount != null">
+				cp_studamount,
+			</if>
+			<if test="cpComment != null">
+				cp_comment,
+			</if>
+			<if test="cpOperator != null">
+				cp_operator,
+			</if>
+			<if test="cpCalculate != null">
+				cp_calculate,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="cpId != null">
+				#{cpId,jdbcType=VARCHAR},
+			</if>
+			<if test="cpSchemeno != null">
+				#{cpSchemeno,jdbcType=INTEGER},
+			</if>
+			<if test="cpName != null">
+				#{cpName,jdbcType=VARCHAR},
+			</if>
+			<if test="cpCoursename != null">
+				#{cpCoursename,jdbcType=VARCHAR},
+			</if>
+			<if test="cpLocaname != null">
+				#{cpLocaname,jdbcType=VARCHAR},
+			</if>
+			<if test="cpTimename != null">
+				#{cpTimename,jdbcType=VARCHAR},
+			</if>
+			<if test="cpModebfname != null">
+				#{cpModebfname,jdbcType=VARCHAR},
+			</if>
+			<if test="cpSchtime != null">
+				#{cpSchtime,jdbcType=VARCHAR},
+			</if>
+			<if test="cpStarttime != null">
+				#{cpStarttime,jdbcType=DATE},
+			</if>
+			<if test="cpEndtime != null">
+				#{cpEndtime,jdbcType=DATE},
+			</if>
+			<if test="cpTeacher != null">
+				#{cpTeacher,jdbcType=VARCHAR},
+			</if>
+			<if test="cpTeachername != null">
+				#{cpTeachername,jdbcType=VARCHAR},
+			</if>
+			<if test="cpStudamount != null">
+				#{cpStudamount,jdbcType=TINYINT},
+			</if>
+			<if test="cpComment != null">
+				#{cpComment,jdbcType=VARCHAR},
+			</if>
+			<if test="cpOperator != null">
+				#{cpOperator,jdbcType=VARCHAR},
+			</if>
+			<if test="cpCalculate != null">
+				#{cpCalculate,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.train.pojo.ClassProcess">
+		update class_process
+		<set>
+			<if test="cpSchemeno != null">
+				cp_schemeNo = #{cpSchemeno,jdbcType=INTEGER},
+			</if>
+			<if test="cpName != null">
+				cp_name = #{cpName,jdbcType=VARCHAR},
+			</if>
+			<if test="cpCoursename != null">
+				cp_coursename = #{cpCoursename,jdbcType=VARCHAR},
+			</if>
+			<if test="cpLocaname != null">
+				cp_locaname = #{cpLocaname,jdbcType=VARCHAR},
+			</if>
+			<if test="cpTimename != null">
+				cp_timename = #{cpTimename,jdbcType=VARCHAR},
+			</if>
+			<if test="cpModebfname != null">
+				cp_modebfname = #{cpModebfname,jdbcType=VARCHAR},
+			</if>
+			<if test="cpSchtime != null">
+				cp_schtime = #{cpSchtime,jdbcType=VARCHAR},
+			</if>
+			<if test="cpStarttime != null">
+				cp_starttime = #{cpStarttime,jdbcType=DATE},
+			</if>
+			<if test="cpEndtime != null">
+				cp_endtime = #{cpEndtime,jdbcType=DATE},
+			</if>
+			<if test="cpTeacher != null">
+				cp_teacher = #{cpTeacher,jdbcType=VARCHAR},
+			</if>
+			<if test="cpTeachername != null">
+				cp_teachername = #{cpTeachername,jdbcType=VARCHAR},
+			</if>
+			<if test="cpStudamount != null">
+				cp_studamount = #{cpStudamount,jdbcType=TINYINT},
+			</if>
+			<if test="cpComment != null">
+				cp_comment = #{cpComment,jdbcType=VARCHAR},
+			</if>
+			<if test="cpOperator != null">
+				cp_operator = #{cpOperator,jdbcType=VARCHAR},
+			</if>
+			<if test="cpCalculate != null">
+				cp_calculate = #{cpCalculate,jdbcType=INTEGER},
+			</if>
+		</set>
+		where cp_id = #{cpId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.train.pojo.ClassProcess">
+		update
+		class_process
+		set cp_schemeNo = #{cpSchemeno,jdbcType=INTEGER},
+		cp_name
+		= #{cpName,jdbcType=VARCHAR},
+		cp_coursename =
+		#{cpCoursename,jdbcType=VARCHAR},
+		cp_locaname =
+		#{cpLocaname,jdbcType=VARCHAR},
+		cp_timename =
+		#{cpTimename,jdbcType=VARCHAR},
+		cp_modebfname =
+		#{cpModebfname,jdbcType=VARCHAR},
+		cp_schtime =
+		#{cpSchtime,jdbcType=VARCHAR},
+		cp_starttime =
+		#{cpStarttime,jdbcType=DATE},
+		cp_endtime = #{cpEndtime,jdbcType=DATE},
+		cp_teacher = #{cpTeacher,jdbcType=VARCHAR},
+		cp_teachername =
+		#{cpTeachername,jdbcType=VARCHAR},
+		cp_studamount =
+		#{cpStudamount,jdbcType=TINYINT},
+		cp_comment =
+		#{cpComment,jdbcType=VARCHAR},
+		cp_operator =
+		#{cpOperator,jdbcType=VARCHAR},
+		cp_calculate =
+		#{cpCalculate,jdbcType=INTEGER}
+		where cp_id = #{cpId,jdbcType=VARCHAR}
+	</update>
+
+	<select id="selectAll" resultMap="BaseResultMap">
+		select * from class_process
+	</select>
+	<select id="selectAllToApp" resultType="java.util.HashMap">
+		select
+		cp_id,cp_coursename,cp_teachername,cp_locaname,cp_starttime,cp_endtime,cp_timename,cp_schtime
+		from class_process
+	</select>
+
+	<select id="selectAllWithCousre" resultType="java.util.HashMap">
+		select
+		course.cp_info,process.*
+		from course_product as course,class_process as
+		process
+		where
+		course.cp_name=process.cp_coursename
+	</select>
+	<select id="selectBySelection" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select
+		course.cp_info,process.*
+		from course_product as
+		course,class_process as
+		process
+		where
+		course.cp_name=process.cp_coursename
+		<if test="cp_coursename!=null and cp_coursename!=''">
+			and process.cp_coursename = #{cp_coursename}
+		</if>
+		<if test="cp_timename!=null and cp_timename!=''">
+			and process.cp_timename = #{cp_timename}
+		</if>
+		<if test="cp_teachername!=null and cp_teachername!=''">
+			and process.cp_teachername = #{cp_teachername}
+		</if>
+		<if test="cp_locaname!=null and cp_locaname!=''">
+			and process.cp_locaname = #{cp_locaname}
+		</if>
+	</select>
+</mapper>

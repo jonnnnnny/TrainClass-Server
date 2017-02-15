@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.train.mapper.StudentRegisterTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.train.pojo.StudentRegisterType" >
+    <id column="srt_id" property="srtId" jdbcType="VARCHAR" />
+    <result column="srt_name" property="srtName" jdbcType="VARCHAR" />
+    <result column="srt_desc" property="srtDesc" jdbcType="VARCHAR" />
+    <result column="srt_feature" property="srtFeature" jdbcType="VARCHAR" />
+    <result column="srt_month" property="srtMonth" jdbcType="TINYINT" />
+    <result column="srt_coursenum" property="srtCoursenum" jdbcType="TINYINT" />
+    <result column="srt_course1" property="srtCourse1" jdbcType="VARCHAR" />
+    <result column="srt_course2" property="srtCourse2" jdbcType="VARCHAR" />
+    <result column="srt_course3" property="srtCourse3" jdbcType="VARCHAR" />
+    <result column="srt_course4" property="srtCourse4" jdbcType="VARCHAR" />
+    <result column="srt_course5" property="srtCourse5" jdbcType="VARCHAR" />
+    <result column="srt_course6" property="srtCourse6" jdbcType="VARCHAR" />
+    <result column="srt_course7" property="srtCourse7" jdbcType="VARCHAR" />
+    <result column="srt_course8" property="srtCourse8" jdbcType="VARCHAR" />
+    <result column="srt_course9" property="srtCourse9" jdbcType="VARCHAR" />
+    <result column="srt_course10" property="srtCourse10" jdbcType="VARCHAR" />
+    <result column="srt_course11" property="srtCourse11" jdbcType="VARCHAR" />
+    <result column="srt_course12" property="srtCourse12" jdbcType="VARCHAR" />
+    <result column="srt_course13" property="srtCourse13" jdbcType="VARCHAR" />
+    <result column="srt_course14" property="srtCourse14" jdbcType="VARCHAR" />
+    <result column="srt_course15" property="srtCourse15" jdbcType="VARCHAR" />
+    <result column="srt_course16" property="srtCourse16" jdbcType="VARCHAR" />
+    <result column="srt_numcount" property="srtNumcount" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    srt_id, srt_name, srt_desc, srt_feature, srt_month, srt_coursenum, srt_course1, srt_course2, 
+    srt_course3, srt_course4, srt_course5, srt_course6, srt_course7, srt_course8, srt_course9, 
+    srt_course10, srt_course11, srt_course12, srt_course13, srt_course14, srt_course15, 
+    srt_course16, srt_numcount
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from student_register_type
+    where srt_id = #{srtId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from student_register_type
+    where srt_id = #{srtId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.train.pojo.StudentRegisterType" >
+    insert into student_register_type (srt_id, srt_name, srt_desc, 
+      srt_feature, srt_month, srt_coursenum, 
+      srt_course1, srt_course2, srt_course3, 
+      srt_course4, srt_course5, srt_course6, 
+      srt_course7, srt_course8, srt_course9, 
+      srt_course10, srt_course11, srt_course12, 
+      srt_course13, srt_course14, srt_course15, 
+      srt_course16, srt_numcount)
+    values (#{srtId,jdbcType=VARCHAR}, #{srtName,jdbcType=VARCHAR}, #{srtDesc,jdbcType=VARCHAR}, 
+      #{srtFeature,jdbcType=VARCHAR}, #{srtMonth,jdbcType=TINYINT}, #{srtCoursenum,jdbcType=TINYINT}, 
+      #{srtCourse1,jdbcType=VARCHAR}, #{srtCourse2,jdbcType=VARCHAR}, #{srtCourse3,jdbcType=VARCHAR}, 
+      #{srtCourse4,jdbcType=VARCHAR}, #{srtCourse5,jdbcType=VARCHAR}, #{srtCourse6,jdbcType=VARCHAR}, 
+      #{srtCourse7,jdbcType=VARCHAR}, #{srtCourse8,jdbcType=VARCHAR}, #{srtCourse9,jdbcType=VARCHAR}, 
+      #{srtCourse10,jdbcType=VARCHAR}, #{srtCourse11,jdbcType=VARCHAR}, #{srtCourse12,jdbcType=VARCHAR}, 
+      #{srtCourse13,jdbcType=VARCHAR}, #{srtCourse14,jdbcType=VARCHAR}, #{srtCourse15,jdbcType=VARCHAR}, 
+      #{srtCourse16,jdbcType=VARCHAR}, #{srtNumcount,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.train.pojo.StudentRegisterType" >
+    insert into student_register_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="srtId != null" >
+        srt_id,
+      </if>
+      <if test="srtName != null" >
+        srt_name,
+      </if>
+      <if test="srtDesc != null" >
+        srt_desc,
+      </if>
+      <if test="srtFeature != null" >
+        srt_feature,
+      </if>
+      <if test="srtMonth != null" >
+        srt_month,
+      </if>
+      <if test="srtCoursenum != null" >
+        srt_coursenum,
+      </if>
+      <if test="srtCourse1 != null" >
+        srt_course1,
+      </if>
+      <if test="srtCourse2 != null" >
+        srt_course2,
+      </if>
+      <if test="srtCourse3 != null" >
+        srt_course3,
+      </if>
+      <if test="srtCourse4 != null" >
+        srt_course4,
+      </if>
+      <if test="srtCourse5 != null" >
+        srt_course5,
+      </if>
+      <if test="srtCourse6 != null" >
+        srt_course6,
+      </if>
+      <if test="srtCourse7 != null" >
+        srt_course7,
+      </if>
+      <if test="srtCourse8 != null" >
+        srt_course8,
+      </if>
+      <if test="srtCourse9 != null" >
+        srt_course9,
+      </if>
+      <if test="srtCourse10 != null" >
+        srt_course10,
+      </if>
+      <if test="srtCourse11 != null" >
+        srt_course11,
+      </if>
+      <if test="srtCourse12 != null" >
+        srt_course12,
+      </if>
+      <if test="srtCourse13 != null" >
+        srt_course13,
+      </if>
+      <if test="srtCourse14 != null" >
+        srt_course14,
+      </if>
+      <if test="srtCourse15 != null" >
+        srt_course15,
+      </if>
+      <if test="srtCourse16 != null" >
+        srt_course16,
+      </if>
+      <if test="srtNumcount != null" >
+        srt_numcount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="srtId != null" >
+        #{srtId,jdbcType=VARCHAR},
+      </if>
+      <if test="srtName != null" >
+        #{srtName,jdbcType=VARCHAR},
+      </if>
+      <if test="srtDesc != null" >
+        #{srtDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="srtFeature != null" >
+        #{srtFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="srtMonth != null" >
+        #{srtMonth,jdbcType=TINYINT},
+      </if>
+      <if test="srtCoursenum != null" >
+        #{srtCoursenum,jdbcType=TINYINT},
+      </if>
+      <if test="srtCourse1 != null" >
+        #{srtCourse1,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse2 != null" >
+        #{srtCourse2,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse3 != null" >
+        #{srtCourse3,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse4 != null" >
+        #{srtCourse4,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse5 != null" >
+        #{srtCourse5,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse6 != null" >
+        #{srtCourse6,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse7 != null" >
+        #{srtCourse7,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse8 != null" >
+        #{srtCourse8,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse9 != null" >
+        #{srtCourse9,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse10 != null" >
+        #{srtCourse10,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse11 != null" >
+        #{srtCourse11,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse12 != null" >
+        #{srtCourse12,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse13 != null" >
+        #{srtCourse13,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse14 != null" >
+        #{srtCourse14,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse15 != null" >
+        #{srtCourse15,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse16 != null" >
+        #{srtCourse16,jdbcType=VARCHAR},
+      </if>
+      <if test="srtNumcount != null" >
+        #{srtNumcount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.train.pojo.StudentRegisterType" >
+    update student_register_type
+    <set >
+      <if test="srtName != null" >
+        srt_name = #{srtName,jdbcType=VARCHAR},
+      </if>
+      <if test="srtDesc != null" >
+        srt_desc = #{srtDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="srtFeature != null" >
+        srt_feature = #{srtFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="srtMonth != null" >
+        srt_month = #{srtMonth,jdbcType=TINYINT},
+      </if>
+      <if test="srtCoursenum != null" >
+        srt_coursenum = #{srtCoursenum,jdbcType=TINYINT},
+      </if>
+      <if test="srtCourse1 != null" >
+        srt_course1 = #{srtCourse1,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse2 != null" >
+        srt_course2 = #{srtCourse2,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse3 != null" >
+        srt_course3 = #{srtCourse3,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse4 != null" >
+        srt_course4 = #{srtCourse4,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse5 != null" >
+        srt_course5 = #{srtCourse5,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse6 != null" >
+        srt_course6 = #{srtCourse6,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse7 != null" >
+        srt_course7 = #{srtCourse7,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse8 != null" >
+        srt_course8 = #{srtCourse8,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse9 != null" >
+        srt_course9 = #{srtCourse9,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse10 != null" >
+        srt_course10 = #{srtCourse10,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse11 != null" >
+        srt_course11 = #{srtCourse11,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse12 != null" >
+        srt_course12 = #{srtCourse12,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse13 != null" >
+        srt_course13 = #{srtCourse13,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse14 != null" >
+        srt_course14 = #{srtCourse14,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse15 != null" >
+        srt_course15 = #{srtCourse15,jdbcType=VARCHAR},
+      </if>
+      <if test="srtCourse16 != null" >
+        srt_course16 = #{srtCourse16,jdbcType=VARCHAR},
+      </if>
+      <if test="srtNumcount != null" >
+        srt_numcount = #{srtNumcount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where srt_id = #{srtId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.train.pojo.StudentRegisterType" >
+    update student_register_type
+    set srt_name = #{srtName,jdbcType=VARCHAR},
+      srt_desc = #{srtDesc,jdbcType=VARCHAR},
+      srt_feature = #{srtFeature,jdbcType=VARCHAR},
+      srt_month = #{srtMonth,jdbcType=TINYINT},
+      srt_coursenum = #{srtCoursenum,jdbcType=TINYINT},
+      srt_course1 = #{srtCourse1,jdbcType=VARCHAR},
+      srt_course2 = #{srtCourse2,jdbcType=VARCHAR},
+      srt_course3 = #{srtCourse3,jdbcType=VARCHAR},
+      srt_course4 = #{srtCourse4,jdbcType=VARCHAR},
+      srt_course5 = #{srtCourse5,jdbcType=VARCHAR},
+      srt_course6 = #{srtCourse6,jdbcType=VARCHAR},
+      srt_course7 = #{srtCourse7,jdbcType=VARCHAR},
+      srt_course8 = #{srtCourse8,jdbcType=VARCHAR},
+      srt_course9 = #{srtCourse9,jdbcType=VARCHAR},
+      srt_course10 = #{srtCourse10,jdbcType=VARCHAR},
+      srt_course11 = #{srtCourse11,jdbcType=VARCHAR},
+      srt_course12 = #{srtCourse12,jdbcType=VARCHAR},
+      srt_course13 = #{srtCourse13,jdbcType=VARCHAR},
+      srt_course14 = #{srtCourse14,jdbcType=VARCHAR},
+      srt_course15 = #{srtCourse15,jdbcType=VARCHAR},
+      srt_course16 = #{srtCourse16,jdbcType=VARCHAR},
+      srt_numcount = #{srtNumcount,jdbcType=INTEGER}
+    where srt_id = #{srtId,jdbcType=VARCHAR}
+  </update>
+</mapper>

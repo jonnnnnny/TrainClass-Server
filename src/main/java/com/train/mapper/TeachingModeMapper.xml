@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.train.mapper.TeachingModeMapper">
+	<resultMap id="BaseResultMap" type="com.train.pojo.TeachingMode">
+		<id column="tm_id" property="tmId" jdbcType="VARCHAR" />
+		<result column="tm_bfname" property="tmBfname" jdbcType="VARCHAR" />
+		<result column="tm_totname" property="tmTotname" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		tm_id, tm_bfname, tm_totname
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from teaching_mode
+		where tm_id = #{tmId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		teaching_mode
+		where tm_id = #{tmId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.train.pojo.TeachingMode">
+		insert into teaching_mode
+		(tm_id, tm_bfname, tm_totname
+		)
+		values (#{tmId,jdbcType=VARCHAR},
+		#{tmBfname,jdbcType=VARCHAR},
+		#{tmTotname,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.train.pojo.TeachingMode">
+		insert into teaching_mode
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="tmId != null">
+				tm_id,
+			</if>
+			<if test="tmBfname != null">
+				tm_bfname,
+			</if>
+			<if test="tmTotname != null">
+				tm_totname,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="tmId != null">
+				#{tmId,jdbcType=VARCHAR},
+			</if>
+			<if test="tmBfname != null">
+				#{tmBfname,jdbcType=VARCHAR},
+			</if>
+			<if test="tmTotname != null">
+				#{tmTotname,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.train.pojo.TeachingMode">
+		update teaching_mode
+		<set>
+			<if test="tmBfname != null">
+				tm_bfname = #{tmBfname,jdbcType=VARCHAR},
+			</if>
+			<if test="tmTotname != null">
+				tm_totname = #{tmTotname,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where tm_id = #{tmId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.train.pojo.TeachingMode">
+		update
+		teaching_mode
+		set tm_bfname = #{tmBfname,jdbcType=VARCHAR},
+		tm_totname =
+		#{tmTotname,jdbcType=VARCHAR}
+		where tm_id = #{tmId,jdbcType=VARCHAR}
+	</update>
+	<select id="selectAllName" resultType="java.lang.String">
+		select tm_bfname from
+		teaching_mode
+	</select>
+	<select id="selectIdByBfName" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select tm_id from teaching_mode where tm_bfname = #{name}
+	</select>
+</mapper>

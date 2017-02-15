@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 引入jedis配置文件 -->
+	<context:property-placeholder location="classpath:redis.properties"
+		ignore-unresolvable="true" />
+
+	<context:component-scan base-package="com.train.redis" />
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxTotal">
+			<value>${redis.pool.maxActive}</value>
+		</property>
+		<property name="maxIdle">
+			<value>${redis.pool.maxIdle}</value>
+		</property>
+		<property name="testOnBorrow" value="true" />
+		<property name="testOnReturn" value="true" />
+	</bean>
+
+	<bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool"
+		scope="singleton">
+		<constructor-arg index="0" ref="jedisPoolConfig" />
+		<constructor-arg index="1">
+			<list>
+				<bean class="redis.clients.jedis.JedisShardInfo">
+					<constructor-arg index="0" value="${redis.host}" />
+					<constructor-arg index="1" value="${redis.port}"
+						type="int" />
+					<!-- <constructor-arg name="host" value="${redis.uri}" /> -->
+					<!-- <constructor-arg name="host" value="${redis.host}" /> <constructor-arg 
+						name="port" value="${redis.port}" /> <constructor-arg name="timeout" value="${redis.timeout}" 
+						/> <constructor-arg name="password" value="" /> -->
+				</bean>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<!-- <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig"> 
+		<property name="maxTotal" value="${redis.pool.maxActive}" /> <property name="maxIdle" 
+		value="${redis.pool.maxIdle}" /> <property name="testOnBorrow" value="true" 
+		/> <property name="testOnReturn" value="true" /> </bean> <bean id="shardedJedisPool" 
+		class="redis.clients.jedis.ShardedJedisPool" scope="singleton"> <constructor-arg 
+		index="0" ref="jedisPoolConfig" /> <constructor-arg index="1"> <list> <bean 
+		class="redis.clients.jedis.JedisShardInfo"> <constructor-arg name="host" 
+		value="${redis.host}" /> <constructor-arg name="port" value="${redis.port}" 
+		/> <constructor-arg name="connectionTimeout" value="${redis.timeout}" /> 
+		<constructor-arg name="weight" value="1" /> </bean> <bean class="redis.clients.jedis.JedisShardInfo"> 
+		<constructor-arg name="host" value="${redis.uri}" /> </bean> <bean class="redis.clients.jedis.JedisShardInfo"> 
+		<property name="host" value="${redis.host}" /> <property name="port" value="${{redis.port}" 
+		/> <constructor-arg index="0" name="host" type="java.lang.String" value="${redis.host}" 
+		/> <constructor-arg index="1" name="port" type="int" value="${{redis.port}" 
+		/> <constructor-arg index="2" name="timeout" type="int" value="${redis.timeout}" 
+		/> <constructor-arg name="host" value="${redis.uri}" /> </bean> </list> </constructor-arg> 
+		</bean> -->
+
+</beans>

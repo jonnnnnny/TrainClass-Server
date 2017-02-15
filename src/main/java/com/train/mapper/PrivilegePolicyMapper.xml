@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.train.mapper.PrivilegePolicyMapper" >
+  <resultMap id="BaseResultMap" type="com.train.pojo.PrivilegePolicy" >
+    <id column="no" property="no" jdbcType="VARCHAR" />
+    <result column="pp_name" property="ppName" jdbcType="VARCHAR" />
+    <result column="pp_icon" property="ppIcon" jdbcType="VARCHAR" />
+    <result column="pp_desc" property="ppDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    no, pp_name, pp_icon, pp_desc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from privilege_policy
+    where no = #{no,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from privilege_policy
+    where no = #{no,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.train.pojo.PrivilegePolicy" >
+    insert into privilege_policy (no, pp_name, pp_icon, 
+      pp_desc)
+    values (#{no,jdbcType=VARCHAR}, #{ppName,jdbcType=VARCHAR}, #{ppIcon,jdbcType=VARCHAR}, 
+      #{ppDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.train.pojo.PrivilegePolicy" >
+    insert into privilege_policy
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        no,
+      </if>
+      <if test="ppName != null" >
+        pp_name,
+      </if>
+      <if test="ppIcon != null" >
+        pp_icon,
+      </if>
+      <if test="ppDesc != null" >
+        pp_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="no != null" >
+        #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="ppName != null" >
+        #{ppName,jdbcType=VARCHAR},
+      </if>
+      <if test="ppIcon != null" >
+        #{ppIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="ppDesc != null" >
+        #{ppDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.train.pojo.PrivilegePolicy" >
+    update privilege_policy
+    <set >
+      <if test="ppName != null" >
+        pp_name = #{ppName,jdbcType=VARCHAR},
+      </if>
+      <if test="ppIcon != null" >
+        pp_icon = #{ppIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="ppDesc != null" >
+        pp_desc = #{ppDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where no = #{no,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.train.pojo.PrivilegePolicy" >
+    update privilege_policy
+    set pp_name = #{ppName,jdbcType=VARCHAR},
+      pp_icon = #{ppIcon,jdbcType=VARCHAR},
+      pp_desc = #{ppDesc,jdbcType=VARCHAR}
+    where no = #{no,jdbcType=VARCHAR}
+  </update>
+</mapper>

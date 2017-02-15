@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.train.mapper.ClassHistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.train.pojo.ClassHistory" >
+    <id column="ch_id" property="chId" jdbcType="VARCHAR" />
+    <result column="ch_name" property="chName" jdbcType="VARCHAR" />
+    <result column="ch_coursename" property="chCoursename" jdbcType="VARCHAR" />
+    <result column="ch_locaname" property="chLocaname" jdbcType="VARCHAR" />
+    <result column="ch_timename" property="chTimename" jdbcType="VARCHAR" />
+    <result column="ch_modebfname" property="chModebfname" jdbcType="VARCHAR" />
+    <result column="ch_schtime" property="chSchtime" jdbcType="VARCHAR" />
+    <result column="ch_starttime" property="chStarttime" jdbcType="DATE" />
+    <result column="ch_endtime" property="chEndtime" jdbcType="DATE" />
+    <result column="ch_teacher" property="chTeacher" jdbcType="VARCHAR" />
+    <result column="ch_teachername" property="chTeachername" jdbcType="VARCHAR" />
+    <result column="ch_studamount" property="chStudamount" jdbcType="TINYINT" />
+    <result column="ch_comment" property="chComment" jdbcType="VARCHAR" />
+    <result column="ch_operator" property="chOperator" jdbcType="VARCHAR" />
+    <result column="ch_calculate" property="chCalculate" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ch_id, ch_name, ch_coursename, ch_locaname, ch_timename, ch_modebfname, ch_schtime, 
+    ch_starttime, ch_endtime, ch_teacher, ch_teachername, ch_studamount, ch_comment, 
+    ch_operator, ch_calculate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from class_history
+    where ch_id = #{chId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from class_history
+    where ch_id = #{chId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.train.pojo.ClassHistory" >
+    insert into class_history (ch_id, ch_name, ch_coursename, 
+      ch_locaname, ch_timename, ch_modebfname, 
+      ch_schtime, ch_starttime, ch_endtime, 
+      ch_teacher, ch_teachername, ch_studamount, 
+      ch_comment, ch_operator, ch_calculate
+      )
+    values (#{chId,jdbcType=VARCHAR}, #{chName,jdbcType=VARCHAR}, #{chCoursename,jdbcType=VARCHAR}, 
+      #{chLocaname,jdbcType=VARCHAR}, #{chTimename,jdbcType=VARCHAR}, #{chModebfname,jdbcType=VARCHAR}, 
+      #{chSchtime,jdbcType=VARCHAR}, #{chStarttime,jdbcType=DATE}, #{chEndtime,jdbcType=DATE}, 
+      #{chTeacher,jdbcType=VARCHAR}, #{chTeachername,jdbcType=VARCHAR}, #{chStudamount,jdbcType=TINYINT}, 
+      #{chComment,jdbcType=VARCHAR}, #{chOperator,jdbcType=VARCHAR}, #{chCalculate,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.train.pojo.ClassHistory" >
+    insert into class_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="chId != null" >
+        ch_id,
+      </if>
+      <if test="chName != null" >
+        ch_name,
+      </if>
+      <if test="chCoursename != null" >
+        ch_coursename,
+      </if>
+      <if test="chLocaname != null" >
+        ch_locaname,
+      </if>
+      <if test="chTimename != null" >
+        ch_timename,
+      </if>
+      <if test="chModebfname != null" >
+        ch_modebfname,
+      </if>
+      <if test="chSchtime != null" >
+        ch_schtime,
+      </if>
+      <if test="chStarttime != null" >
+        ch_starttime,
+      </if>
+      <if test="chEndtime != null" >
+        ch_endtime,
+      </if>
+      <if test="chTeacher != null" >
+        ch_teacher,
+      </if>
+      <if test="chTeachername != null" >
+        ch_teachername,
+      </if>
+      <if test="chStudamount != null" >
+        ch_studamount,
+      </if>
+      <if test="chComment != null" >
+        ch_comment,
+      </if>
+      <if test="chOperator != null" >
+        ch_operator,
+      </if>
+      <if test="chCalculate != null" >
+        ch_calculate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="chId != null" >
+        #{chId,jdbcType=VARCHAR},
+      </if>
+      <if test="chName != null" >
+        #{chName,jdbcType=VARCHAR},
+      </if>
+      <if test="chCoursename != null" >
+        #{chCoursename,jdbcType=VARCHAR},
+      </if>
+      <if test="chLocaname != null" >
+        #{chLocaname,jdbcType=VARCHAR},
+      </if>
+      <if test="chTimename != null" >
+        #{chTimename,jdbcType=VARCHAR},
+      </if>
+      <if test="chModebfname != null" >
+        #{chModebfname,jdbcType=VARCHAR},
+      </if>
+      <if test="chSchtime != null" >
+        #{chSchtime,jdbcType=VARCHAR},
+      </if>
+      <if test="chStarttime != null" >
+        #{chStarttime,jdbcType=DATE},
+      </if>
+      <if test="chEndtime != null" >
+        #{chEndtime,jdbcType=DATE},
+      </if>
+      <if test="chTeacher != null" >
+        #{chTeacher,jdbcType=VARCHAR},
+      </if>
+      <if test="chTeachername != null" >
+        #{chTeachername,jdbcType=VARCHAR},
+      </if>
+      <if test="chStudamount != null" >
+        #{chStudamount,jdbcType=TINYINT},
+      </if>
+      <if test="chComment != null" >
+        #{chComment,jdbcType=VARCHAR},
+      </if>
+      <if test="chOperator != null" >
+        #{chOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="chCalculate != null" >
+        #{chCalculate,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.train.pojo.ClassHistory" >
+    update class_history
+    <set >
+      <if test="chName != null" >
+        ch_name = #{chName,jdbcType=VARCHAR},
+      </if>
+      <if test="chCoursename != null" >
+        ch_coursename = #{chCoursename,jdbcType=VARCHAR},
+      </if>
+      <if test="chLocaname != null" >
+        ch_locaname = #{chLocaname,jdbcType=VARCHAR},
+      </if>
+      <if test="chTimename != null" >
+        ch_timename = #{chTimename,jdbcType=VARCHAR},
+      </if>
+      <if test="chModebfname != null" >
+        ch_modebfname = #{chModebfname,jdbcType=VARCHAR},
+      </if>
+      <if test="chSchtime != null" >
+        ch_schtime = #{chSchtime,jdbcType=VARCHAR},
+      </if>
+      <if test="chStarttime != null" >
+        ch_starttime = #{chStarttime,jdbcType=DATE},
+      </if>
+      <if test="chEndtime != null" >
+        ch_endtime = #{chEndtime,jdbcType=DATE},
+      </if>
+      <if test="chTeacher != null" >
+        ch_teacher = #{chTeacher,jdbcType=VARCHAR},
+      </if>
+      <if test="chTeachername != null" >
+        ch_teachername = #{chTeachername,jdbcType=VARCHAR},
+      </if>
+      <if test="chStudamount != null" >
+        ch_studamount = #{chStudamount,jdbcType=TINYINT},
+      </if>
+      <if test="chComment != null" >
+        ch_comment = #{chComment,jdbcType=VARCHAR},
+      </if>
+      <if test="chOperator != null" >
+        ch_operator = #{chOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="chCalculate != null" >
+        ch_calculate = #{chCalculate,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ch_id = #{chId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.train.pojo.ClassHistory" >
+    update class_history
+    set ch_name = #{chName,jdbcType=VARCHAR},
+      ch_coursename = #{chCoursename,jdbcType=VARCHAR},
+      ch_locaname = #{chLocaname,jdbcType=VARCHAR},
+      ch_timename = #{chTimename,jdbcType=VARCHAR},
+      ch_modebfname = #{chModebfname,jdbcType=VARCHAR},
+      ch_schtime = #{chSchtime,jdbcType=VARCHAR},
+      ch_starttime = #{chStarttime,jdbcType=DATE},
+      ch_endtime = #{chEndtime,jdbcType=DATE},
+      ch_teacher = #{chTeacher,jdbcType=VARCHAR},
+      ch_teachername = #{chTeachername,jdbcType=VARCHAR},
+      ch_studamount = #{chStudamount,jdbcType=TINYINT},
+      ch_comment = #{chComment,jdbcType=VARCHAR},
+      ch_operator = #{chOperator,jdbcType=VARCHAR},
+      ch_calculate = #{chCalculate,jdbcType=INTEGER}
+    where ch_id = #{chId,jdbcType=VARCHAR}
+  </update>
+</mapper>

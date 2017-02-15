@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.train.mapper.TeachingLocationMapper">
+	<resultMap id="BaseResultMap" type="com.train.pojo.TeachingLocation">
+		<id column="tl_id" property="tlId" jdbcType="VARCHAR" />
+		<result column="tl_name" property="tlName" jdbcType="VARCHAR" />
+		<result column="tl_addr" property="tlAddr" jdbcType="VARCHAR" />
+		<result column="tl_tel" property="tlTel" jdbcType="VARCHAR" />
+		<result column="tl_trafficinfo" property="tlTrafficinfo"
+			jdbcType="VARCHAR" />
+		<result column="tl_diagram" property="tlDiagram" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		tl_id, tl_name, tl_addr, tl_tel, tl_trafficinfo, tl_diagram
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from teaching_location
+		where tl_id = #{tlId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		teaching_location
+		where tl_id = #{tlId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.train.pojo.TeachingLocation">
+		insert into teaching_location
+		(tl_id, tl_name, tl_addr,
+		tl_tel, tl_trafficinfo, tl_diagram
+		)
+		values
+		(#{tlId,jdbcType=VARCHAR}, #{tlName,jdbcType=VARCHAR},
+		#{tlAddr,jdbcType=VARCHAR},
+		#{tlTel,jdbcType=VARCHAR},
+		#{tlTrafficinfo,jdbcType=VARCHAR}, #{tlDiagram,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.train.pojo.TeachingLocation">
+		insert into teaching_location
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="tlId != null">
+				tl_id,
+			</if>
+			<if test="tlName != null">
+				tl_name,
+			</if>
+			<if test="tlAddr != null">
+				tl_addr,
+			</if>
+			<if test="tlTel != null">
+				tl_tel,
+			</if>
+			<if test="tlTrafficinfo != null">
+				tl_trafficinfo,
+			</if>
+			<if test="tlDiagram != null">
+				tl_diagram,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="tlId != null">
+				#{tlId,jdbcType=VARCHAR},
+			</if>
+			<if test="tlName != null">
+				#{tlName,jdbcType=VARCHAR},
+			</if>
+			<if test="tlAddr != null">
+				#{tlAddr,jdbcType=VARCHAR},
+			</if>
+			<if test="tlTel != null">
+				#{tlTel,jdbcType=VARCHAR},
+			</if>
+			<if test="tlTrafficinfo != null">
+				#{tlTrafficinfo,jdbcType=VARCHAR},
+			</if>
+			<if test="tlDiagram != null">
+				#{tlDiagram,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.train.pojo.TeachingLocation">
+		update teaching_location
+		<set>
+			<if test="tlName != null">
+				tl_name = #{tlName,jdbcType=VARCHAR},
+			</if>
+			<if test="tlAddr != null">
+				tl_addr = #{tlAddr,jdbcType=VARCHAR},
+			</if>
+			<if test="tlTel != null">
+				tl_tel = #{tlTel,jdbcType=VARCHAR},
+			</if>
+			<if test="tlTrafficinfo != null">
+				tl_trafficinfo = #{tlTrafficinfo,jdbcType=VARCHAR},
+			</if>
+			<if test="tlDiagram != null">
+				tl_diagram = #{tlDiagram,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where tl_id = #{tlId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.train.pojo.TeachingLocation">
+		update
+		teaching_location
+		set tl_name = #{tlName,jdbcType=VARCHAR},
+		tl_addr =
+		#{tlAddr,jdbcType=VARCHAR},
+		tl_tel = #{tlTel,jdbcType=VARCHAR},
+		tl_trafficinfo = #{tlTrafficinfo,jdbcType=VARCHAR},
+		tl_diagram =
+		#{tlDiagram,jdbcType=VARCHAR}
+		where tl_id = #{tlId,jdbcType=VARCHAR}
+	</update>
+	<select id="selectAllName" resultType="java.lang.String">
+		select tl_name from
+		teaching_location
+	</select>
+	<select id="selectIdByName" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select tl_id from teaching_location where tl_name=#{name}
+	</select>
+</mapper>

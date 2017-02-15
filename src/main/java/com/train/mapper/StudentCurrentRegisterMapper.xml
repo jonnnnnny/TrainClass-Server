@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.train.mapper.StudentCurrentRegisterMapper">
+	<resultMap id="BaseResultMap" type="com.train.pojo.StudentCurrentRegister">
+		<id column="no" property="no" jdbcType="INTEGER" />
+		<result column="scr_time" property="scrTime" jdbcType="TIMESTAMP" />
+		<result column="scr_regtypeid" property="scrRegtypeid"
+			jdbcType="VARCHAR" />
+		<result column="scr_regtypename" property="scrRegtypename"
+			jdbcType="VARCHAR" />
+		<result column="scr_regtypefeat" property="scrRegtypefeat"
+			jdbcType="VARCHAR" />
+		<result column="scr_studid" property="scrStudid" jdbcType="VARCHAR" />
+		<result column="scr_password" property="scrPassword" jdbcType="VARCHAR" />
+		<result column="scr_classid" property="scrClassid" jdbcType="VARCHAR" />
+		<result column="scr_classname" property="scrClassname"
+			jdbcType="VARCHAR" />
+		<result column="scr_singleornot" property="scrSingleornot"
+			jdbcType="VARCHAR" />
+		<result column="scr_ps" property="scrPs" jdbcType="VARCHAR" />
+		<result column="scr_receipt" property="scrReceipt" jdbcType="VARCHAR" />
+		<result column="scr_operator" property="scrOperator" jdbcType="VARCHAR" />
+		<result column="scr_info" property="scrInfo" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		no, scr_time, scr_regtypeid, scr_regtypename,
+		scr_regtypefeat,
+		scr_studid, scr_password,
+		scr_classid, scr_classname,
+		scr_singleornot, scr_ps, scr_receipt, scr_operator,
+		scr_info
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from student_current_register
+		where no = #{no,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		student_current_register
+		where no = #{no,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.train.pojo.StudentCurrentRegister">
+		insert into
+		student_current_register (no, scr_time, scr_regtypeid,
+		scr_regtypename, scr_regtypefeat, scr_studid,
+		scr_password,
+		scr_classid, scr_classname,
+		scr_singleornot, scr_ps, scr_receipt,
+		scr_operator, scr_info)
+		values (#{no,jdbcType=INTEGER},
+		#{scrTime,jdbcType=TIMESTAMP},
+		#{scrRegtypeid,jdbcType=VARCHAR},
+		#{scrRegtypename,jdbcType=VARCHAR},
+		#{scrRegtypefeat,jdbcType=VARCHAR}, #{scrStudid,jdbcType=VARCHAR},
+		#{scrPassword,jdbcType=VARCHAR}, #{scrClassid,jdbcType=VARCHAR},
+		#{scrClassname,jdbcType=VARCHAR},
+		#{scrSingleornot,jdbcType=VARCHAR},
+		#{scrPs,jdbcType=VARCHAR}, #{scrReceipt,jdbcType=VARCHAR},
+		#{scrOperator,jdbcType=VARCHAR}, #{scrInfo,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.train.pojo.StudentCurrentRegister">
+		insert into student_current_register
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="no != null">
+				no,
+			</if>
+			<if test="scrTime != null">
+				scr_time,
+			</if>
+			<if test="scrRegtypeid != null">
+				scr_regtypeid,
+			</if>
+			<if test="scrRegtypename != null">
+				scr_regtypename,
+			</if>
+			<if test="scrRegtypefeat != null">
+				scr_regtypefeat,
+			</if>
+			<if test="scrStudid != null">
+				scr_studid,
+			</if>
+			<if test="scrPassword != null">
+				scr_password,
+			</if>
+			<if test="scrClassid != null">
+				scr_classid,
+			</if>
+			<if test="scrClassname != null">
+				scr_classname,
+			</if>
+			<if test="scrSingleornot != null">
+				scr_singleornot,
+			</if>
+			<if test="scrPs != null">
+				scr_ps,
+			</if>
+			<if test="scrReceipt != null">
+				scr_receipt,
+			</if>
+			<if test="scrOperator != null">
+				scr_operator,
+			</if>
+			<if test="scrInfo != null">
+				scr_info,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="no != null">
+				#{no,jdbcType=INTEGER},
+			</if>
+			<if test="scrTime != null">
+				#{scrTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="scrRegtypeid != null">
+				#{scrRegtypeid,jdbcType=VARCHAR},
+			</if>
+			<if test="scrRegtypename != null">
+				#{scrRegtypename,jdbcType=VARCHAR},
+			</if>
+			<if test="scrRegtypefeat != null">
+				#{scrRegtypefeat,jdbcType=VARCHAR},
+			</if>
+			<if test="scrStudid != null">
+				#{scrStudid,jdbcType=VARCHAR},
+			</if>
+			<if test="scrPassword != null">
+				#{scrPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="scrClassid != null">
+				#{scrClassid,jdbcType=VARCHAR},
+			</if>
+			<if test="scrClassname != null">
+				#{scrClassname,jdbcType=VARCHAR},
+			</if>
+			<if test="scrSingleornot != null">
+				#{scrSingleornot,jdbcType=VARCHAR},
+			</if>
+			<if test="scrPs != null">
+				#{scrPs,jdbcType=VARCHAR},
+			</if>
+			<if test="scrReceipt != null">
+				#{scrReceipt,jdbcType=VARCHAR},
+			</if>
+			<if test="scrOperator != null">
+				#{scrOperator,jdbcType=VARCHAR},
+			</if>
+			<if test="scrInfo != null">
+				#{scrInfo,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.train.pojo.StudentCurrentRegister">
+		update student_current_register
+		<set>
+			<if test="scrTime != null">
+				scr_time = #{scrTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="scrRegtypeid != null">
+				scr_regtypeid = #{scrRegtypeid,jdbcType=VARCHAR},
+			</if>
+			<if test="scrRegtypename != null">
+				scr_regtypename = #{scrRegtypename,jdbcType=VARCHAR},
+			</if>
+			<if test="scrRegtypefeat != null">
+				scr_regtypefeat = #{scrRegtypefeat,jdbcType=VARCHAR},
+			</if>
+			<if test="scrStudid != null">
+				scr_studid = #{scrStudid,jdbcType=VARCHAR},
+			</if>
+			<if test="scrPassword != null">
+				scr_password = #{scrPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="scrClassid != null">
+				scr_classid = #{scrClassid,jdbcType=VARCHAR},
+			</if>
+			<if test="scrClassname != null">
+				scr_classname = #{scrClassname,jdbcType=VARCHAR},
+			</if>
+			<if test="scrSingleornot != null">
+				scr_singleornot = #{scrSingleornot,jdbcType=VARCHAR},
+			</if>
+			<if test="scrPs != null">
+				scr_ps = #{scrPs,jdbcType=VARCHAR},
+			</if>
+			<if test="scrReceipt != null">
+				scr_receipt = #{scrReceipt,jdbcType=VARCHAR},
+			</if>
+			<if test="scrOperator != null">
+				scr_operator = #{scrOperator,jdbcType=VARCHAR},
+			</if>
+			<if test="scrInfo != null">
+				scr_info = #{scrInfo,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where no = #{no,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.train.pojo.StudentCurrentRegister">
+		update
+		student_current_register
+		set scr_time = #{scrTime,jdbcType=TIMESTAMP},
+		scr_regtypeid = #{scrRegtypeid,jdbcType=VARCHAR},
+		scr_regtypename =
+		#{scrRegtypename,jdbcType=VARCHAR},
+		scr_regtypefeat =
+		#{scrRegtypefeat,jdbcType=VARCHAR},
+		scr_studid =
+		#{scrStudid,jdbcType=VARCHAR},
+		scr_password =
+		#{scrPassword,jdbcType=VARCHAR},
+		scr_classid =
+		#{scrClassid,jdbcType=VARCHAR},
+		scr_classname =
+		#{scrClassname,jdbcType=VARCHAR},
+		scr_singleornot =
+		#{scrSingleornot,jdbcType=VARCHAR},
+		scr_ps = #{scrPs,jdbcType=VARCHAR},
+		scr_receipt = #{scrReceipt,jdbcType=VARCHAR},
+		scr_operator =
+		#{scrOperator,jdbcType=VARCHAR},
+		scr_info = #{scrInfo,jdbcType=VARCHAR}
+		where no = #{no,jdbcType=INTEGER}
+	</update>
+
+	<select id="selectByStudidAndclassid" parameterType="java.util.HashMap"
+		resultMap="BaseResultMap">
+		select * from student_current_register where
+		scr_studid=#{studid} and scr_classid=#{classid}
+	</select>
+</mapper>

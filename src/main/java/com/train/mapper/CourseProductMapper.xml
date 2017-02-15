@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.train.mapper.CourseProductMapper">
+	<resultMap id="BaseResultMap" type="com.train.pojo.CourseProduct">
+		<id column="cp_id" property="cpId" jdbcType="VARCHAR" />
+		<result column="cp_name" property="cpName" jdbcType="VARCHAR" />
+		<result column="cp_icon" property="cpIcon" jdbcType="VARCHAR" />
+		<result column="cp_info" property="cpInfo" jdbcType="VARCHAR" />
+		<result column="cp_hour" property="cpHour" jdbcType="VARCHAR" />
+		<result column="cp_stdprice" property="cpStdprice" jdbcType="VARCHAR" />
+		<result column="cp_stuprice" property="cpStuprice" jdbcType="VARCHAR" />
+		<result column="cp_specprice" property="cpSpecprice" jdbcType="VARCHAR" />
+		<result column="cp_maintm" property="cpMaintm" jdbcType="VARCHAR" />
+		<result column="cp_refertm" property="cpRefertm" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		cp_id, cp_name, cp_icon, cp_info, cp_hour, cp_stdprice,
+		cp_stuprice,
+		cp_specprice,
+		cp_maintm, cp_refertm
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from course_product
+		where cp_id = #{cpId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		course_product
+		where cp_id = #{cpId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.train.pojo.CourseProduct">
+		insert into course_product
+		(cp_id, cp_name, cp_icon,
+		cp_info, cp_hour, cp_stdprice,
+		cp_stuprice,
+		cp_specprice, cp_maintm,
+		cp_refertm)
+		values (#{cpId,jdbcType=VARCHAR},
+		#{cpName,jdbcType=VARCHAR},
+		#{cpIcon,jdbcType=VARCHAR},
+		#{cpInfo,jdbcType=VARCHAR}, #{cpHour,jdbcType=VARCHAR},
+		#{cpStdprice,jdbcType=VARCHAR},
+		#{cpStuprice,jdbcType=VARCHAR},
+		#{cpSpecprice,jdbcType=VARCHAR},
+		#{cpMaintm,jdbcType=VARCHAR},
+		#{cpRefertm,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.train.pojo.CourseProduct">
+		insert into course_product
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="cpId != null">
+				cp_id,
+			</if>
+			<if test="cpName != null">
+				cp_name,
+			</if>
+			<if test="cpIcon != null">
+				cp_icon,
+			</if>
+			<if test="cpInfo != null">
+				cp_info,
+			</if>
+			<if test="cpHour != null">
+				cp_hour,
+			</if>
+			<if test="cpStdprice != null">
+				cp_stdprice,
+			</if>
+			<if test="cpStuprice != null">
+				cp_stuprice,
+			</if>
+			<if test="cpSpecprice != null">
+				cp_specprice,
+			</if>
+			<if test="cpMaintm != null">
+				cp_maintm,
+			</if>
+			<if test="cpRefertm != null">
+				cp_refertm,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="cpId != null">
+				#{cpId,jdbcType=VARCHAR},
+			</if>
+			<if test="cpName != null">
+				#{cpName,jdbcType=VARCHAR},
+			</if>
+			<if test="cpIcon != null">
+				#{cpIcon,jdbcType=VARCHAR},
+			</if>
+			<if test="cpInfo != null">
+				#{cpInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="cpHour != null">
+				#{cpHour,jdbcType=VARCHAR},
+			</if>
+			<if test="cpStdprice != null">
+				#{cpStdprice,jdbcType=VARCHAR},
+			</if>
+			<if test="cpStuprice != null">
+				#{cpStuprice,jdbcType=VARCHAR},
+			</if>
+			<if test="cpSpecprice != null">
+				#{cpSpecprice,jdbcType=VARCHAR},
+			</if>
+			<if test="cpMaintm != null">
+				#{cpMaintm,jdbcType=VARCHAR},
+			</if>
+			<if test="cpRefertm != null">
+				#{cpRefertm,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.train.pojo.CourseProduct">
+		update course_product
+		<set>
+			<if test="cpName != null">
+				cp_name = #{cpName,jdbcType=VARCHAR},
+			</if>
+			<if test="cpIcon != null">
+				cp_icon = #{cpIcon,jdbcType=VARCHAR},
+			</if>
+			<if test="cpInfo != null">
+				cp_info = #{cpInfo,jdbcType=VARCHAR},
+			</if>
+			<if test="cpHour != null">
+				cp_hour = #{cpHour,jdbcType=VARCHAR},
+			</if>
+			<if test="cpStdprice != null">
+				cp_stdprice = #{cpStdprice,jdbcType=VARCHAR},
+			</if>
+			<if test="cpStuprice != null">
+				cp_stuprice = #{cpStuprice,jdbcType=VARCHAR},
+			</if>
+			<if test="cpSpecprice != null">
+				cp_specprice = #{cpSpecprice,jdbcType=VARCHAR},
+			</if>
+			<if test="cpMaintm != null">
+				cp_maintm = #{cpMaintm,jdbcType=VARCHAR},
+			</if>
+			<if test="cpRefertm != null">
+				cp_refertm = #{cpRefertm,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where cp_id = #{cpId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.train.pojo.CourseProduct">
+		update
+		course_product
+		set cp_name = #{cpName,jdbcType=VARCHAR},
+		cp_icon =
+		#{cpIcon,jdbcType=VARCHAR},
+		cp_info = #{cpInfo,jdbcType=VARCHAR},
+		cp_hour = #{cpHour,jdbcType=VARCHAR},
+		cp_stdprice =
+		#{cpStdprice,jdbcType=VARCHAR},
+		cp_stuprice =
+		#{cpStuprice,jdbcType=VARCHAR},
+		cp_specprice =
+		#{cpSpecprice,jdbcType=VARCHAR},
+		cp_maintm =
+		#{cpMaintm,jdbcType=VARCHAR},
+		cp_refertm =
+		#{cpRefertm,jdbcType=VARCHAR}
+		where cp_id = #{cpId,jdbcType=VARCHAR}
+	</update>
+
+	<select id="selectAllCousreProductName" resultType="java.lang.String">
+		select
+		cp_name from course_product
+	</select>
+	<select id="selectIdByName" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select cp_id from course_product where cp_name=#{name}
+	</select>
+</mapper>

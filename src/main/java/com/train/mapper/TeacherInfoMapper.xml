@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.train.mapper.TeacherInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.train.pojo.TeacherInfo" >
+    <id column="ti_id" property="tiId" jdbcType="VARCHAR" />
+    <result column="ti_bfname" property="tiBfname" jdbcType="VARCHAR" />
+    <result column="ti_chnname" property="tiChnname" jdbcType="VARCHAR" />
+    <result column="ti_engname" property="tiEngname" jdbcType="VARCHAR" />
+    <result column="ti_gender" property="tiGender" jdbcType="VARCHAR" />
+    <result column="ti_pic" property="tiPic" jdbcType="VARCHAR" />
+    <result column="ti_idcardphoto" property="tiIdcardphoto" jdbcType="VARCHAR" />
+    <result column="ti_bfdesc" property="tiBfdesc" jdbcType="VARCHAR" />
+    <result column="ti_contact" property="tiContact" jdbcType="VARCHAR" />
+    <result column="ti_comment" property="tiComment" jdbcType="VARCHAR" />
+    <result column="ti_histinfo" property="tiHistinfo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ti_id, ti_bfname, ti_chnname, ti_engname, ti_gender, ti_pic, ti_idcardphoto, ti_bfdesc, 
+    ti_contact, ti_comment, ti_histinfo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from teacher_info
+    where ti_id = #{tiId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from teacher_info
+    where ti_id = #{tiId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.train.pojo.TeacherInfo" >
+    insert into teacher_info (ti_id, ti_bfname, ti_chnname, 
+      ti_engname, ti_gender, ti_pic, 
+      ti_idcardphoto, ti_bfdesc, ti_contact, 
+      ti_comment, ti_histinfo)
+    values (#{tiId,jdbcType=VARCHAR}, #{tiBfname,jdbcType=VARCHAR}, #{tiChnname,jdbcType=VARCHAR}, 
+      #{tiEngname,jdbcType=VARCHAR}, #{tiGender,jdbcType=VARCHAR}, #{tiPic,jdbcType=VARCHAR}, 
+      #{tiIdcardphoto,jdbcType=VARCHAR}, #{tiBfdesc,jdbcType=VARCHAR}, #{tiContact,jdbcType=VARCHAR}, 
+      #{tiComment,jdbcType=VARCHAR}, #{tiHistinfo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.train.pojo.TeacherInfo" >
+    insert into teacher_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tiId != null" >
+        ti_id,
+      </if>
+      <if test="tiBfname != null" >
+        ti_bfname,
+      </if>
+      <if test="tiChnname != null" >
+        ti_chnname,
+      </if>
+      <if test="tiEngname != null" >
+        ti_engname,
+      </if>
+      <if test="tiGender != null" >
+        ti_gender,
+      </if>
+      <if test="tiPic != null" >
+        ti_pic,
+      </if>
+      <if test="tiIdcardphoto != null" >
+        ti_idcardphoto,
+      </if>
+      <if test="tiBfdesc != null" >
+        ti_bfdesc,
+      </if>
+      <if test="tiContact != null" >
+        ti_contact,
+      </if>
+      <if test="tiComment != null" >
+        ti_comment,
+      </if>
+      <if test="tiHistinfo != null" >
+        ti_histinfo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tiId != null" >
+        #{tiId,jdbcType=VARCHAR},
+      </if>
+      <if test="tiBfname != null" >
+        #{tiBfname,jdbcType=VARCHAR},
+      </if>
+      <if test="tiChnname != null" >
+        #{tiChnname,jdbcType=VARCHAR},
+      </if>
+      <if test="tiEngname != null" >
+        #{tiEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="tiGender != null" >
+        #{tiGender,jdbcType=VARCHAR},
+      </if>
+      <if test="tiPic != null" >
+        #{tiPic,jdbcType=VARCHAR},
+      </if>
+      <if test="tiIdcardphoto != null" >
+        #{tiIdcardphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="tiBfdesc != null" >
+        #{tiBfdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tiContact != null" >
+        #{tiContact,jdbcType=VARCHAR},
+      </if>
+      <if test="tiComment != null" >
+        #{tiComment,jdbcType=VARCHAR},
+      </if>
+      <if test="tiHistinfo != null" >
+        #{tiHistinfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.train.pojo.TeacherInfo" >
+    update teacher_info
+    <set >
+      <if test="tiBfname != null" >
+        ti_bfname = #{tiBfname,jdbcType=VARCHAR},
+      </if>
+      <if test="tiChnname != null" >
+        ti_chnname = #{tiChnname,jdbcType=VARCHAR},
+      </if>
+      <if test="tiEngname != null" >
+        ti_engname = #{tiEngname,jdbcType=VARCHAR},
+      </if>
+      <if test="tiGender != null" >
+        ti_gender = #{tiGender,jdbcType=VARCHAR},
+      </if>
+      <if test="tiPic != null" >
+        ti_pic = #{tiPic,jdbcType=VARCHAR},
+      </if>
+      <if test="tiIdcardphoto != null" >
+        ti_idcardphoto = #{tiIdcardphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="tiBfdesc != null" >
+        ti_bfdesc = #{tiBfdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tiContact != null" >
+        ti_contact = #{tiContact,jdbcType=VARCHAR},
+      </if>
+      <if test="tiComment != null" >
+        ti_comment = #{tiComment,jdbcType=VARCHAR},
+      </if>
+      <if test="tiHistinfo != null" >
+        ti_histinfo = #{tiHistinfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ti_id = #{tiId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.train.pojo.TeacherInfo" >
+    update teacher_info
+    set ti_bfname = #{tiBfname,jdbcType=VARCHAR},
+      ti_chnname = #{tiChnname,jdbcType=VARCHAR},
+      ti_engname = #{tiEngname,jdbcType=VARCHAR},
+      ti_gender = #{tiGender,jdbcType=VARCHAR},
+      ti_pic = #{tiPic,jdbcType=VARCHAR},
+      ti_idcardphoto = #{tiIdcardphoto,jdbcType=VARCHAR},
+      ti_bfdesc = #{tiBfdesc,jdbcType=VARCHAR},
+      ti_contact = #{tiContact,jdbcType=VARCHAR},
+      ti_comment = #{tiComment,jdbcType=VARCHAR},
+      ti_histinfo = #{tiHistinfo,jdbcType=VARCHAR}
+    where ti_id = #{tiId,jdbcType=VARCHAR}
+  </update>
+</mapper>
